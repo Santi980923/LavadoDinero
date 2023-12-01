@@ -109,7 +109,7 @@ public class Controller {
     }
 
     @PostMapping("/clienteproducto")
-    public ResponseEntity<ApiResponse> saveProducto(@RequestBody ClienteProductoDto clienteProductoDto) {
+    public ResponseEntity<ApiResponse> saveClienteProducto(@RequestBody ClienteProductoDto clienteProductoDto) {
         try {
             // Verificar si cliente no es nulo
             if (clienteProductoDto.getFields() == null || clienteProductoDto.getFields().isEmpty()) {
@@ -128,7 +128,7 @@ public class Controller {
             productoClienteRepository.save(clienteProductos);
 
             // Obtén el ID generado
-            String generatedId = clienteProductoDto.getId();
+            String generatedId = clienteProductos.getId();
 
             // Construye la respuesta exitosa
             ApiResponseData responseData = new ApiResponseData(generatedId, "Queued");
@@ -144,7 +144,7 @@ public class Controller {
     }
 
     @PostMapping("/transaccional")
-    public ResponseEntity<ApiResponse> saveProducto(@RequestBody TransaccionalDto transaccionalDto) {
+    public ResponseEntity<ApiResponse> saveTransaccional(@RequestBody TransaccionalDto transaccionalDto) {
         try {
             // Verificar si cliente no es nulo
             if (transaccionalDto.getFields() == null || transaccionalDto.getFields().isEmpty()) {
@@ -163,7 +163,7 @@ public class Controller {
             transaccionalRepository.save(transaccional);
 
             // Obtén el ID generado
-            String generatedId = transaccionalDto.getId();
+            String generatedId = transaccional.getId();
 
             // Construye la respuesta exitosa
             ApiResponseData responseData = new ApiResponseData(generatedId, "Queued");
